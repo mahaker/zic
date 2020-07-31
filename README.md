@@ -6,3 +6,10 @@ Zenhub issue creator.
 
 - Create issues on Github.
 - Setting `estimate` and `pipeline`, `epic` to the issues. 
+
+### How to use(TBD)
+
+```shell script
+docker build --force-rm -t zic .
+docker run --rm -v "$PWD:/data"
+```
