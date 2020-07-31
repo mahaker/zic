@@ -1,3 +1,4 @@
-import { HOGE } from './lib'
+import issues from './issues.json'
+
 console.log('hello ts.')
-console.log(HOGE)
+console.log(issues.organization, issues.repository)
