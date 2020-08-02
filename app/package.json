@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
+    "prebuild": "rm -rf ./dist",
     "build": "tsc",
-    "start": "export NODE_ENV=development && npm run build && node dist/index.js",
+    "start": "export NODE_ENV=development && npm run build && cp ./src/issues.json ./dist && cp ./src/dev.json ./dist && node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

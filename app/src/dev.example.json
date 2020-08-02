@@ -1,0 +1,4 @@
+{
+  "github-pat": "your GitHub personal access token",
+  "zenhub-token": "your ZenHub API token"
+}
