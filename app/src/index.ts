@@ -1,10 +1,10 @@
-import * as Lib from './lib'
+import * as Env from './env'
 import { GitHub } from './github'
 
 console.log('hello ts.')
 
-const issues = Lib.readIssuesJson()
+const issues = Env.readIssuesJson()
 console.log(issues.organization, issues.repository)
 
-const github = new GitHub(Lib.getGitHubPAT(), issues.organization, issues.repository)
+const github = new GitHub(Env.getGitHubPAT(), issues.organization, issues.repository)
 github.createIssue('Title', 'Body', [])
