@@ -1,4 +1,5 @@
 {
+  "repo-id": "your ID of the repository",
   "github-pat": "your GitHub personal access token",
   "zenhub-token": "your ZenHub API token"
 }
