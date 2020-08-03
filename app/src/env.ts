@@ -11,6 +11,13 @@ export const readIssuesJson = (): Issues => {
   return JSON.parse(raw) as Issues
 }
 
+export const getRepositoryId = (): string => {
+  if(process.env.GITHUB_REPO_ID) return process.env.GITHUB_REPO_ID
+
+  const raw = fs.readFileSync(`${__dirname}/dev.json`, { encoding: 'utf-8'})
+  return JSON.parse(raw)['repo-id']
+}
+
 export const getGitHubPAT = (): string => {
   if(process.env.GITHUB_PAT) return process.env.GITHUB_PAT
 
