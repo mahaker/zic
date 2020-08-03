@@ -1,5 +1,24 @@
 {
   "organization": "mahaker",
-  "repository": "zic-issues"
+  "repository": "zic-issues",
+  "issues": [
+    {
+      "title": "Title1",
+      "body": "Body<br>body1",
+      "labels": ["bug", "wontfix"]
+    },
+    {
+      "title": "Title2",
+      "body": "Body<br>body2",
+      "labels": ["duplicate"]
+    },
+    {
+      "title": "Title3"
+    },
+    {
+      "title": "Title4",
+      "body": "Body<br>body4"
+    }
+  ]
 }
 

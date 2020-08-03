@@ -1,14 +1,21 @@
 import fs from 'fs'
 
-export type CreateIssuePayload = {
-  organization: string
-  repository: string
+export type Issue = {
+  title: string
+  body?: string
+  labels?: string[]
 }
 
-export const readIssuesJson = (): CreateIssuePayload => {
+export type IssuesJson = {
+  organization: string
+  repository: string
+  issues: Issue[]
+}
+
+export const readIssuesJson = (): IssuesJson => {
   const path = process.env.NODE_ENV === 'development' ? `${__dirname}/issues.json` : '/data/issues.json'
   const raw = fs.readFileSync(path, { encoding: 'utf-8'})
-  return JSON.parse(raw) as CreateIssuePayload
+  return JSON.parse(raw) as IssuesJson
 }
 
 export const getRepositoryId = (): string => {

@@ -1,4 +1,5 @@
 import https from 'https'
+import * as Env from './env'
 
 export class GitHub {
   constructor(
@@ -7,7 +8,7 @@ export class GitHub {
     private repository: string
   ) {}
 
-  async createIssue(title: string, body: string, labels: string[]): Promise<number> {
+  async createIssue(payload: Env.Issue): Promise<number> {
     return new Promise((resolve, reject) => {
       const req = https.request({
         method: 'POST',
@@ -33,16 +34,18 @@ export class GitHub {
 
         response.on('error', (err: Error) => reject(err))
       })
-      req.write(this.buildIssue(title, body, labels))
+      req.write(this.buildBody(payload))
 
       req.on('error', (err: Error) => reject(err))
       req.end()
     })
   }
 
-  private buildIssue(title: string, body: string, labels: string[]): string {
+  private buildBody(payload: Env.Issue): string {
     return JSON.stringify({
-      title, body, labels
+      title: payload.title,
+      body: payload.body || '',
+      labels: payload.labels || []
     })
   }
 }
