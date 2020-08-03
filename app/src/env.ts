@@ -1,16 +1,5 @@
 import fs from 'fs'
-
-export type Issue = {
-  title: string
-  body?: string
-  labels?: string[]
-}
-
-export type IssuesJson = {
-  organization: string
-  repository: string
-  issues: Issue[]
-}
+import type { IssuesJson } from './github'
 
 export const readIssuesJson = (): IssuesJson => {
   const path = process.env.NODE_ENV === 'development' ? `${__dirname}/issues.json` : '/data/issues.json'

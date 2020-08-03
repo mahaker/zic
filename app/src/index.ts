@@ -1,7 +1,6 @@
 import * as Env from './env'
 import { GitHub } from './github'
 
-
 const issues = Env.readIssuesJson()
 const github = new GitHub(Env.getGitHubPAT(), issues.organization, issues.repository)
 
