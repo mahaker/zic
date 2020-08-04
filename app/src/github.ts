@@ -40,7 +40,7 @@ export class GitHub {
 
         response.on('end', () => {
           res = JSON.parse(res)
-          resolve(res.id)
+          resolve(res.number)
         })
 
         response.on('error', (err: Error) => reject(err))
