@@ -1,5 +1,13 @@
 import fs from 'fs'
-import type { IssuesJson } from './github'
+import type { Issue } from './github'
+import type { IssueOnBoard } from './zenhub'
+
+
+export type IssuesJson = {
+  organization: string
+  repository: string
+  issues: ReadonlyArray<Issue & IssueOnBoard>
+}
 
 export const readIssuesJson = (): IssuesJson => {
   const path = process.env.NODE_ENV === 'development' ? `${__dirname}/issues.json` : '/data/issues.json'
@@ -7,8 +15,8 @@ export const readIssuesJson = (): IssuesJson => {
   return JSON.parse(raw) as IssuesJson
 }
 
-export const getRepositoryId = (): string => {
-  if(process.env.GITHUB_REPO_ID) return process.env.GITHUB_REPO_ID
+export const getRepositoryId = (): number => {
+  if(process.env.GITHUB_REPO_ID) return parseInt(process.env.GITHUB_REPO_ID)
 
   const raw = fs.readFileSync(`${__dirname}/dev.json`, { encoding: 'utf-8'})
   return JSON.parse(raw)['repo-id']

@@ -6,12 +6,6 @@ export type Issue = {
   labels?: string[]
 }
 
-export type IssuesJson = {
-  organization: string
-  repository: string
-  issues: Issue[]
-}
-
 export class GitHub {
   constructor(
     private pat: string,

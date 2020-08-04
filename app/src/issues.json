@@ -5,7 +5,8 @@
     {
       "title": "Title1",
       "body": "Body<br>body1",
-      "labels": ["bug", "wontfix"]
+      "labels": ["bug", "wontfix"],
+      "estimate": 2
     },
     {
       "title": "Title2",
@@ -13,7 +14,8 @@
       "labels": ["duplicate"]
     },
     {
-      "title": "Title3"
+      "title": "Title3",
+      "estimate": 5
     },
     {
       "title": "Title4",
