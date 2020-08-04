@@ -1,5 +1,6 @@
 {
-  "repo-id": "your ID of the repository",
+  "repo-id": "your ID of the repository. ID is number",
+  "workspace-id": "your ID of the workspace.",
   "github-pat": "your GitHub personal access token",
   "zenhub-token": "your ZenHub API token"
 }
