@@ -35,3 +35,10 @@ export const getZenHubToken = (): string => {
   const raw = fs.readFileSync(`${__dirname}/dev.json`, { encoding: 'utf-8'})
   return JSON.parse(raw)['zenhub-token']
 }
+
+export const getWorkspaceId = (): string => {
+  if(process.env.ZENHUB_WORKSPACE_ID) return process.env.ZENHUB_WORKSPACE_ID
+
+  const raw = fs.readFileSync(`${__dirname}/dev.json`, { encoding: 'utf-8'})
+  return JSON.parse(raw)['workspace-id']
+}

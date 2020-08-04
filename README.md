@@ -13,3 +13,6 @@ Zenhub issue creator.
 docker build --force-rm -t zic .
 docker run --rm -v "$PWD:/data"
 ```
+
+:memo:
+zenhub workspace-id → #workspaces/name-${here}/board
