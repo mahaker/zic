@@ -14,6 +14,8 @@ zenhub.init()
       if (payload.estimate) await zenhub.setEstimate(no, payload.estimate)
 
       if (payload.pipeline) await zenhub.setPipeline(no, payload.pipeline.name, payload.pipeline.position)
+
+      if (payload.epic) await zenhub.setEpicIssue(no, payload.epic.issueNo)
     })
   })
   .catch(reason => {
