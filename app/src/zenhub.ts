@@ -63,16 +63,8 @@ export class ZenHub {
         host: 'api.zenhub.com',
         path: `/p1/repositories/${this.repoId}/issues/${issueNo}/estimate`
       }, (response) => {
-        let res: any = ''
-
-        response.on('data', (chunk) => {
-          res += chunk
-        })
-
-        response.on('end', () => {
-          res = JSON.parse(res)
-          resolve()
-        })
+        response.on('data', () => {})
+        response.on('end', () => resolve())
 
         response.on('error', (err: Error) => reject(err))
       })
@@ -94,15 +86,8 @@ export class ZenHub {
         host: 'api.zenhub.com',
         path: `/p2/workspaces/${this.workspaceId}/repositories/${this.repoId}/issues/${issueNo}/moves`
       }, (response) => {
-        let res: any = ''
-
-        response.on('data', (chunk) => {
-          res += chunk
-        })
-
-        response.on('end', () => {
-          resolve()
-        })
+        response.on('data', () => {})
+        response.on('end', () => resolve())
 
         response.on('error', (err: Error) => reject(err))
       })
@@ -127,15 +112,8 @@ export class ZenHub {
         host: 'api.zenhub.com',
         path: `/p1/repositories/${this.repoId}/epics/${epicIssueNo}/update_issues`
       }, (response) => {
-        let res: any = ''
-
-        response.on('data', (chunk) => {
-          res += chunk
-        })
-
-        response.on('end', () => {
-          resolve()
-        })
+        response.on('data', () => {})
+        response.on('end', () => resolve())
 
         response.on('error', (err: Error) => reject(err))
       })
