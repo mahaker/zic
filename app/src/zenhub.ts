@@ -52,7 +52,7 @@ export class ZenHub {
     })
   }
 
-  setEstimate(issueNo: number, estimate: number): Promise<number> {
+  setEstimate(issueNo: number, estimate: number): Promise<void> {
     return new Promise((resolve, reject) => {
       const req = https.request({
         method: 'PUT',
