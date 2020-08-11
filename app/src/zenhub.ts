@@ -1,5 +1,4 @@
 import https from 'https'
-import { setUncaughtExceptionCaptureCallback } from 'process'
 
 export type IssueOnBoard = {
   estimate?: number,
