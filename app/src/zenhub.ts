@@ -5,6 +5,9 @@ export type IssueOnBoard = {
   pipeline?: {
     name: string,
     position?: 'top' | 'bottom' | number
+  },
+  epic?: {
+    issueNo: number
   }
 }
 
@@ -110,7 +113,37 @@ export class ZenHub {
 
       req.on('error', (err: Error) => reject(err))
       req.end()
-    })   
+    })
+  }
+
+  setEpicIssue(addIssueNo: number, epicIssueNo: number): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const req = https.request({
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Authentication-Token': this.token
+        },
+        host: 'api.zenhub.com',
+        path: `/p1/repositories/${this.repoId}/epics/${epicIssueNo}/update_issues`
+      }, (response) => {
+        let res: any = ''
+
+        response.on('data', (chunk) => {
+          res += chunk
+        })
+
+        response.on('end', () => {
+          resolve()
+        })
+
+        response.on('error', (err: Error) => reject(err))
+      })
+      req.write(this.buildSetEpicIssueBody(addIssueNo))
+
+      req.on('error', (err: Error) => reject(err))
+      req.end()
+    })
   }
 
   private buildSetEstimateBody(estimate: number): string {
@@ -122,5 +155,13 @@ export class ZenHub {
       'pipeline_id': pipelineId,
       'position': position || 'top'
     })
+  }
+
+  private buildSetEpicIssueBody(issueNo: number): string {
+    const _ = {
+      'remove_issues': [],
+      'add_issues': [{ 'repo_id': this.repoId, 'issue_number': issueNo }]
+    }
+    return JSON.stringify(_)
   }
 }

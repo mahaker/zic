@@ -1,4 +1,41 @@
 {
   "organization": "mahaker",
-  "repository": "zic-issues2"
+  "repository": "zic-issues2",
+  "issues": [
+    {
+      "title": "Title1",
+      "body": "Body<br>body1",
+      "labels": ["bug", "wontfix"],
+      "estimate": 2,
+      "pipeline": {
+        "name": "Icebox"
+      },
+      "epic": {
+        "issueNo": 54
+      }
+    },
+    {
+      "title": "Title2",
+      "body": "Body<br>body2",
+      "labels": ["duplicate"],
+      "pipeline": {
+        "name": "Backlog"
+      }
+    },
+    {
+      "title": "Title3",
+      "estimate": 5,
+      "epic": {
+        "issueNo": 54
+      }
+    },
+    {
+      "title": "Title4",
+      "body": "Body<br>body4",
+      "pipeline": {
+        "name": "Backlog",
+        "position": "bottom"
+      }
+    }
+  ]
 }

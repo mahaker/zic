@@ -9,6 +9,9 @@
       "estimate": 2,
       "pipeline": {
         "name": "Icebox"
+      },
+      "epic": {
+        "issueNo": 54
       }
     },
     {
@@ -21,7 +24,10 @@
     },
     {
       "title": "Title3",
-      "estimate": 5
+      "estimate": 5,
+      "epic": {
+        "issueNo": 54
+      }
     },
     {
       "title": "Title4",
