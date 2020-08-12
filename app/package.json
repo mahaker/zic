@@ -4,15 +4,35 @@
   "description": "",
   "scripts": {
     "prebuild": "rm -rf ./dist",
-    "build": "tsc",
+    "build": "tsc --project tsconfig.prod.json",
     "start": "export NODE_ENV=development && npm run build && cp ./src/issues.json ./dist && cp ./src/dev.json ./dist && node dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "Hideaki Matsunami <carbon0409@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^26.0.9",
     "@types/node": "^14.0.27",
+    "jest": "^26.3.0",
+    "ts-jest": "^26.2.0",
     "typescript": "^3.9.7"
+  },
+  "jest": {
+    "moduleFileExtensions": ["ts", "js"],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "**/test/**/*.spec.ts"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    }
   }
 }
