@@ -44,3 +44,24 @@ describe('Env#getGithubPAT', () => {
     expect(pat).toBe('mocked pat')
   })
 })
+
+describe('Env#getZenhubToken', () => {
+  beforeEach(() => {
+    const mocked: jest.Mocked<typeof fs> = fs as any
+    mocked.readFileSync.mockReturnValue(JSON.stringify({'zenhub-token': 'mocked token'}))
+  })
+  afterEach(() => {
+    delete process.env.ZENHUB_TOKEN
+  })
+  it('from process.env', () => {
+    process.env.ZENHUB_TOKEN = 'aaa'
+    const token = Env.getZenHubToken()
+
+    expect(token).toBe('aaa')
+  })
+  it('from dev.json', () => {
+    const token = Env.getZenHubToken()
+
+    expect(token).toBe('mocked token')
+  })
+})
