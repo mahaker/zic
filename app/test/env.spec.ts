@@ -65,3 +65,24 @@ describe('Env#getZenhubToken', () => {
     expect(token).toBe('mocked token')
   })
 })
+
+describe('Env#getWorkspaceId', () => {
+  beforeEach(() => {
+    const mocked: jest.Mocked<typeof fs> = fs as any
+    mocked.readFileSync.mockReturnValue(JSON.stringify({'workspace-id': 'mocked workspace id'}))
+  })
+  afterEach(() => {
+    delete process.env.ZENHUB_WORKSPACE_ID
+  })
+  it('from process.env', () => {
+    process.env.ZENHUB_WORKSPACE_ID = 'aaa'
+    const id = Env.getWorkspaceId()
+
+    expect(id).toBe('aaa')
+  })
+  it('from dev.json', () => {
+    const id = Env.getWorkspaceId()
+
+    expect(id).toBe('mocked workspace id')
+  })
+})
